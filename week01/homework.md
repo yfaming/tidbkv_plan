@@ -1,7 +1,9 @@
 # clone 代码
 
 https://github.com/pingcap/pd
+
 https://github.com/pingcap/tidb
+
 https://github.com/tikv/tikv
 
 pd 和 tidb 是用 Go 开发的，tikv 是用 Rust 开发的，build 之前需要安装好各自开发环境，不用细说。
