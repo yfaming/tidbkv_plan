@@ -17,6 +17,7 @@ tidb 的可执行文件也在 `bin` 目录中，为 `tidb-server`。
 
 tikv 是 Rust 写的，自然用 Cargo 作为构建工具，执行 `cargo build` 即可。可执行文件是 `target/debug/tikv-ctl` 和 `target/debug/tikv-server`。
 这里只构建了 debug 版，若要构建 release 版，则执行 `cargo build --release` 即可。
+
 没想到的是，tikv 竟然还在使用 nightly Rust，简单搜了一下 TiKV 的 issue，没找到讨论这一问题的，暂略过。
 
 构建过程，需要下载依赖，费时较长，而且有墙的干扰，网络需要很给力才行。
@@ -80,14 +81,18 @@ mysql -h 127.0.0.1 -P 4000 -u root -D test
 
 TiDB 有 47w+ 行 Golang 代码，显然慢慢看是不太现实的。
 而 `rg -i transaction` 又得到超过 1k 条结果，除掉 mock 和 test 相关的，仍然太多。
+
 浏览代码结构，也没看到有顶级模块叫 transaction 的。
+
 不过倒是发现了 session 和 sessionctx 这两者看起来很有希望。
 
 打开 session/session.go，看到 `type Session interface` 的各种方法，看起来就在这里了。
 但遗憾的是，虽然有 `CommitTxn()`, `RollbackTxn()` 却没有 `BeginTxn()`/`StartTxn()`。
+
 挨个翻下去，最后终于发现 `PrepareTxnCtx()` 才是我们要找的方法。其文档也说明了这一点：
 
 > // PrepareTxnCtx starts a goroutine to begin a transaction if needed, and creates a new transaction context.
+>
 > // It is called before we execute a sql query.
 
 OK，加一行日志看看: `log.Info("[session/session.go] PrepareTxnCtx(): hello transaction!")`。
