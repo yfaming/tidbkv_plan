@@ -96,10 +96,10 @@ thread 数量从默认 8 个逐步调大到 48，QPS 从 1w+ 逐步达到 3w 左
 ```
 
 监控截图:
-<img src="sb_oltp_point_select_tidb_qps_and_duration.png" />
-<img src="sb_oltp_point_select_tikv_cluster_cpu.png" />
-<img src="sb_oltp_point_select_tikv_cluster_qps.png" />
-<img src="sb_oltp_point_select_tikv_grpc_qps_and_duration.png" />
+<img src="images/sb_oltp_point_select_tidb_qps_and_duration.png" />
+<img src="images/sb_oltp_point_select_tikv_cluster_cpu.png" />
+<img src="images/sb_oltp_point_select_tikv_cluster_qps.png" />
+<img src="images/sb_oltp_point_select_tikv_grpc_qps_and_duration.png" />
 
 瓶颈可能在于 TiDB 的内存与 CPU 上。
 
@@ -117,10 +117,10 @@ thread 数量从 8 个逐步调大到 64，QPS 从 300+ 上升到 2500。
 线程数调大之后，测得的 QPS 并不稳定，波动比较大。但 latency 比较稳定。达到 96 线程之后，latency 也不稳定了。
 
 监控截图:
-<img src="sb_oltp_insert_tidb_qps_and_duration.png" />
-<img src="sb_oltp_insert_tikv_cluster_cpu.png" />
-<img src="sb_oltp_insert_tikv_cluster_qps.png" />
-<img src="sb_oltp_insert_tikv_grpc_qps_and_duration.png" />
+<img src="images/sb_oltp_insert_tidb_qps_and_duration.png" />
+<img src="images/sb_oltp_insert_tikv_cluster_cpu.png" />
+<img src="images/sb_oltp_insert_tikv_cluster_qps.png" />
+<img src="images/sb_oltp_insert_tikv_grpc_qps_and_duration.png" />
 
 瓶颈可能在于 TiKV 上，可能与 RocksDB 或者 IO 有关。
 
@@ -135,10 +135,10 @@ thread 数量从 8 逐步调大到 64，QPS 从 659 上升到 11282。latency �
 想不到同等条件下，支持的 delete 的 qps 是 insert 的好几倍。
 
 监控截图:
-<img src="sb_oltp_delete_tidb_qps_and_duration.png" />
-<img src="sb_oltp_delete_tikv_cluster_cpu.png" />
-<img src="sb_oltp_delete_tikv_cluster_qps.png" />
-<img src="sb_oltp_delete_tikv_grpc_qps_and_duration.png" />
+<img src="images/sb_oltp_delete_tidb_qps_and_duration.png" />
+<img src="images/sb_oltp_delete_tikv_cluster_cpu.png" />
+<img src="images/sb_oltp_delete_tikv_cluster_qps.png" />
+<img src="images/sb_oltp_delete_tikv_grpc_qps_and_duration.png" />
 瓶颈可能在于 TiKV 上，可能与 RocksDB 或者 IO 有关。
 
 ## oltp_update_index
@@ -151,10 +151,10 @@ thread 数量从 8 调大到 64，QPS 从 174 上升到 9141。
 ```
 
 监控截图:
-<img src="sb_oltp_update_index_tidb_qps_and_duration.png" />
-<img src="sb_oltp_update_index_tikv_cluster_cpu.png" />
-<img src="sb_oltp_update_index_tikv_cluster_qps.png" />
-<img src="sb_oltp_update_index_tikv_grpc_qps_and_duration.png" />
+<img src="images/sb_oltp_update_index_tidb_qps_and_duration.png" />
+<img src="images/sb_oltp_update_index_tikv_cluster_cpu.png" />
+<img src="images/sb_oltp_update_index_tikv_cluster_qps.png" />
+<img src="images/sb_oltp_update_index_tikv_grpc_qps_and_duration.png" />
 瓶颈可能在于 TiKV 上，可能与 RocksDB 或者 IO 有关。
 
 ## oltp_update_non_index
@@ -167,10 +167,10 @@ thread 数量从 8 调大到 64，QPS 从 408 上升到 2282。
 ```
 
 监控截图:
-<img src="sb_oltp_update_non_index_tidb_qps_and_duration.png" />
-<img src="sb_oltp_update_non_index_tikv_cluster_cpu.png" />
-<img src="sb_oltp_update_non_index_tikv_cluster_qps.png" />
-<img src="sb_oltp_update_non_index_tikv_grpc_qps_and_duration.png" />
+<img src="images/sb_oltp_update_non_index_tidb_qps_and_duration.png" />
+<img src="images/sb_oltp_update_non_index_tikv_cluster_cpu.png" />
+<img src="images/sb_oltp_update_non_index_tikv_cluster_qps.png" />
+<img src="images/sb_oltp_update_non_index_tikv_grpc_qps_and_duration.png" />
 瓶颈可能在于 TiKV 上，可能与 RocksDB 或者 IO 有关。
 
 ## bulk_insert
@@ -183,10 +183,10 @@ thread 数量从 8 调大到 64，QPS 从 168923 上升到 174387。
 ```
 
 监控截图:
-<img src="sb_bulk_insert_tidb_qps_and_duration.png" />
-<img src="sb_bulk_insert_tikv_cluster_cpu.png" />
-<img src="sb_bulk_insert_tikv_cluster_qps.png" />
-<img src="sb_bulk_insert_tikv_grpc_qps_and_duration.png" />
+<img src="images/sb_bulk_insert_tidb_qps_and_duration.png" />
+<img src="images/sb_bulk_insert_tikv_cluster_cpu.png" />
+<img src="images/sb_bulk_insert_tikv_cluster_qps.png" />
+<img src="images/sb_bulk_insert_tikv_grpc_qps_and_duration.png" />
 瓶颈可能在于 TiKV 上，可能与 RocksDB 或者 IO 有关。
 
 sysbench 中未执行的测试: oltp_read_only, oltp_read_write, oltp_write_only, select_random_points, select_random_ranges。
@@ -238,10 +238,10 @@ UPDATE - Takes(s): 5.5, Count: 504, OPS: 92.1, Avg(us): 7183, Min(us): 5596, Max
 ```
 
 监控截图:
-<img src="ycsb_tidb_qps_and_duration.png" />
-<img src="ycsb_tikv_cluster_cpu.png" />
-<img src="ycsb_tikv_cluster_qps.png" />
-<img src="ycsb_tikv_grpc_qps_and_duration.png" />
+<img src="images/ycsb_tidb_qps_and_duration.png" />
+<img src="images/ycsb_tikv_cluster_cpu.png" />
+<img src="images/ycsb_tikv_cluster_qps.png" />
+<img src="images/ycsb_tikv_grpc_qps_and_duration.png" />
 
 以上 workload 太少，离性能瓶颈太遥远。
 
@@ -259,10 +259,10 @@ NEW_ORDER - Takes(s): 239.6, Count: 33393, TPM: 8362.9, Sum(ms): 5681413, Avg(ms
 ```
 
 监控截图:
-<img src="tpcc_tidb_qps_and_duration.png" />
-<img src="tpcc_tikv_cluster_cpu.png" />
-<img src="tpcc_tikv_cluster_qps.png" />
-<img src="tpcc_tikv_grpc_qps_and_duration.png" />
+<img src="images/tpcc_tidb_qps_and_duration.png" />
+<img src="images/tpcc_tikv_cluster_cpu.png" />
+<img src="images/tpcc_tikv_cluster_qps.png" />
+<img src="images/tpcc_tikv_grpc_qps_and_duration.png" />
 
 瓶颈可能在于 TiKV 的 IO 方面。
 
