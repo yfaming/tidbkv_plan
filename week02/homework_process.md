@@ -50,6 +50,9 @@ Week02 Homework
 
 # 安装软件
 ```sh
+# 修改默认编辑器为 vim
+update-alternatives --config editor
+
 # ntp
 sudo apt install ntpstat ntp
 sudo systemctl start ntp.service
@@ -140,6 +143,12 @@ mysql -u root -h 104.156.238.151 -P 4000
 # sysbench
 https://github.com/akopytov/sysbench
 
+Ubuntu 下安装:
+```sh
+curl -s https://packagecloud.io/install/repositories/akopytov/sysbench/script.deb.sh | sudo bash
+sudo apt -y install sysbench
+```
+
 Ubuntu 下，可用 `dpkg -L sysbench` 查看安装的文件。
 
 [如何用 Sysbench 测试 TiDB](https://docs.pingcap.com/zh/tidb/stable/benchmark-tidb-using-sysbench)
@@ -167,7 +176,7 @@ db-driver=mysql
 # 10 个表，1 百万条记录
 # --threads=48 参数可以调整
 sysbench --config-file=sysbench_config oltp_point_select --tables=10 --table-size=1000000 prepare
-sysbench --config-file=sysbench_config oltp_point_select --tables=10 --table-size=1000000 run
+sysbench --config-file=sysbench_config oltp_point_select --tables=10 --table-size=1000000 --threads=32 run
 sysbench --config-file=sysbench_config oltp_point_select --tables=10 --table-size=1000000 cleanup
 
 # (done)oltp_insert
