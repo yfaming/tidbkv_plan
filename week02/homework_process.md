@@ -311,7 +311,7 @@ go-tpc tpcc cleanup -H 165.22.253.27 -P 4000 -D tpcc --warehouses 8
 
 # tpch
 ```
-go-tpc tpch prepare -H 165.22.253.27 -P 4000 -D tpch --sf 4
-go-tpc tpch run -H 165.22.253.27 -P 4000 -D tpch --sf 4
-go-tpc tpch clenup -H 165.22.253.27 -P 4000 -D tpch --sf 4
+go-tpc tpch prepare -H 165.22.253.27 -P 4000 -D tpch --sf 8 --threads=32
+go-tpc tpch run -H 165.22.253.27 -P 4000 -D tpch --sf 8 --threads=32
+go-tpc tpch clenup -H 165.22.253.27 -P 4000 -D tpch --sf 8 --threads=32
 ```
